@@ -22,5 +22,9 @@ val _ = (
         assert(not(Real.==(1.2, 1.1)))
     ]);
 
+    test("raises", [
+        raises (List.tl, ([]), List.Empty)
+    ]);
+
     OS.Process.exit(OS.Process.success)
 );
