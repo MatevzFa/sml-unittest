@@ -1,5 +1,4 @@
 
-exception Assert;
 exception InternalAssert;
 
 datatype assert_result = OK | FAIL | FAILIDX of int;
@@ -13,10 +12,12 @@ fun assert (e: bool) =
 fun assert_eq (e1: ''a, e2: ''a) =
     assert (e1 = e2);
 
+
 fun raises (f: 'a -> 'b, args: 'a, e: exn) =
     (f args; FAIL)
     handle thrown_e =>
         assert_eq (exnName thrown_e, exnName e)
+
 
 fun assert_all_i (nil, _)          = raise InternalAssert
 |   assert_all_i (OK :: nil, i)    = OK
