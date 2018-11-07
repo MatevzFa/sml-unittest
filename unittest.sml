@@ -19,7 +19,7 @@ fun raises (f: 'a -> 'b, args: 'a, e: exn) =
         assert_eq (exnName thrown_e, exnName e)
 
 
-fun assert_all_i (nil, _)          = raise InternalAssert
+fun assert_all_i (nil, _)          = OK
 |   assert_all_i (OK :: nil, i)    = OK
 |   assert_all_i (FAIL :: nil, i)  = FAILIDX i
 |   assert_all_i (OK :: tail, i)   = assert_all_i (tail, i + 1)
