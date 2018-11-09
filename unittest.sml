@@ -15,6 +15,10 @@ fun assert_equal (f: 'a -> ''b, args: 'a, e: ''b) =
     (assert (f (args) = e))
     handle throw_e => FAILEXCEPT (throw_e, ~1);
 
+fun assert_eq_real (e1: real, e2: real) =
+    assert (Real.==(e1, e2))
+
+
 fun raises (f: 'a -> 'b, args: 'a, e: exn) =
     (f args; FAIL)
     handle thrown_e =>
